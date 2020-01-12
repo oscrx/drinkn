@@ -1,0 +1,19 @@
+name: Build frontend
+
+on: [push]
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: whoan/docker-build-with-cache-action@v3
+      with:
+        username: "${{ secrets.REGISTRY_USERNAME }}"
+        password: "${{ secrets.REGISTRY_PASSWORD }}"
+        image_name: bierteam/frontend
+        image_tag: "${{ github.ref }}"
+        context: frontend
+        push_image_and_stages: false

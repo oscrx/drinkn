@@ -10,5 +10,6 @@ RUN npm run build
 
 # --- Release with Alpine nginx----
 FROM nginx:stable-alpine
+LABEL "repository"="https://github.com/bierteam/drinkn"
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
