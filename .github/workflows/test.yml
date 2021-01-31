@@ -40,6 +40,7 @@ jobs:
           supermarket-api: /supermarket-api
   test:
     needs: changes
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         # Parse JSON array containing names of all filters matching any of changed files
