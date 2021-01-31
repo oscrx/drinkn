@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 export const store = Vue.observable({
   isNavOpen: false,
-  jwt: ""
+  jwt: ''
 })
 
 export const mutations = {
