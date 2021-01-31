@@ -8,6 +8,15 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  paths:
+  - "auth/**"
+  - "beer-api/**"
+  - "beer-import/**"
+  - "cocktail-api/**"
+  - "cocktail-import/**"
+  - "frontend/**"
+  - "supermarket-api/**"
+  - "supermarket-import/**"
 
 jobs:
   build:
