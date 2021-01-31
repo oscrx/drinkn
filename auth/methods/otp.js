@@ -23,5 +23,3 @@ const uri = (user, service, secret, imageUri) => {
 }
 
 module.exports = { generate, check }
-
-
