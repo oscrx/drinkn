@@ -43,21 +43,15 @@ jobs:
         - "supermarket-api"
         # - "supermarket-import"
         exclude:
-        - os: macos-latest
-          node: 12.x
-        - os: windows-latest
-          node: 12.x
-        - os: macos-latest
-          node: 14.x
-        - os: windows-latest
-          node: 14.x
+        - os: [ macos-latest, windows-latest ]
+          node-version: [ 12.x, 14.x ]
 
     steps:
     - name: Echo site details
       env:
         FOLDER: ${{ matrix.folder }}
-        NODE: ${{ matrix.os }}
-        OS: ${{ matrix.node-version }}
+        OS: ${{ matrix.os }}
+        NODE: ${{ matrix.node-version }}
       run: echo $FOLDER $OS $NODE $PWD
       working-directory: ${{ matrix.folder }}
 
