@@ -41,7 +41,7 @@ jobs:
   test:
     needs: changes
     runs-on: ubuntu-latest
-    if: ${{ matrix.folder }} != null
+    if: ${{ fromJson(needs.changes.outputs.folders) }} != []
     strategy:
       matrix:
         # Parse JSON array containing names of all filters matching any of changed files
