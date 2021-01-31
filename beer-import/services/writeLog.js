@@ -11,11 +11,13 @@ const writeLog = (message, type, context, ip) => {
     ip
   }
   console.log(logMessage.message)
-  logger.create(logMessage, function (err, user) {
-    if (err) {
-      console.error(err)
-    }
-  })
+  if (process.env.NODE_ENV !== 'test') {
+    logger.create(logMessage, function (err, user) {
+      if (err) {
+        console.error(err)
+      }
+    })
+  }
 }
 
 module.exports = writeLog

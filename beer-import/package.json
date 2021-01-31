@@ -15,7 +15,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "standard && jest --config test/unit/jest.conf.js",
+    "test": "jest --config test/unit/jest.conf.js",
+    "lint": "standard",
     "test-e2e": "node test/e2e/runner.js",
     "docker-build": "docker build . -t import-bier",
     "docker-run": "docker run --env-file .env import-bier"
