@@ -61,8 +61,11 @@ jobs:
         - 15.x
 
     steps:
-    - name: Echo site details
-      env:
+    - env:
+        FOLDER: ${{ matrix.folder }}
+        NODE: ${{ matrix.node-version }}
+      run: echo $FOLDER $NODE $PWD
+    - env:
         FOLDER: ${{ matrix.folder }}
         NODE: ${{ matrix.node-version }}
       run: echo $FOLDER $NODE $PWD
