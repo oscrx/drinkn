@@ -18,7 +18,7 @@ jobs:
         folder:
         - auth
         # - beer-api
-        # - beer-import
+        - beer-import
         # - cocktail-api
         # - cocktail-import
         - frontend
@@ -102,9 +102,6 @@ jobs:
         tags:  bierteam/${{ matrix.folder }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
-
-    - name: Echo image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
 
   deploy:
     runs-on: ubuntu-latest
