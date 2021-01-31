@@ -22,8 +22,8 @@ jobs:
         - cocktail-api
         # - cocktail-import
         - frontend
-        # - supermarket-api
-        - supermarket-import
+        - supermarket-api
+        # - supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
         - 14.x
