@@ -34,14 +34,14 @@ jobs:
         - 14.x
         - 15.x
         folders:
-        - "auth"
-        # - "beer-api"
-        - "beer-import"
-        - "cocktail-api"
-        # - "cocktail-import"
-        - "frontend"
-        - "supermarket-api"
-        # - "supermarket-import"
+        - auth
+        # - beer-api
+        - beer-import
+        - cocktail-api
+        # - cocktail-import
+        - frontend
+        - supermarket-api
+        # - supermarket-import
         exclude:
         - os: [ macos-latest, windows-latest ]
           node-version: [ 12.x, 14.x ]
@@ -52,7 +52,10 @@ jobs:
         FOLDER: ${{ matrix.folder }}
         OS: ${{ matrix.os }}
         NODE: ${{ matrix.node-version }}
-      run: echo $FOLDER $OS $NODE $PWD
+      run: echo $FOLDER 
+      run: echo $OS 
+      run: echo $NODE 
+      run: echo $PWD
       working-directory: ${{ matrix.folder }}
 
     - uses: actions/checkout@v2
@@ -60,6 +63,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      working-directory: ${{ matrix.folder }}
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
