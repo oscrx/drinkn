@@ -20,10 +20,10 @@ jobs:
         # - beer-api
         - beer-import
         # - cocktail-api
-        # - cocktail-import
+        - cocktail-import
         - frontend
         # - supermarket-api
-        # - supermarket-import
+        - supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
         - 14.x
@@ -65,10 +65,10 @@ jobs:
         - auth
         # - beer-api
         - beer-import
-        # - cocktail-api
+        - cocktail-api
         # - cocktail-import
         - frontend
-        # - supermarket-api
+        - supermarket-api
         # - supermarket-import
     steps:
     - name: Check Out Repo 
