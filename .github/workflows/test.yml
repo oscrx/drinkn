@@ -21,10 +21,10 @@ on:
 
 
 jobs:
-  defaults:
-    run:
-      working-directory: ${{ matrix.folder }}
   build:
+    defaults:
+      run:
+        working-directory: ${{ matrix.folder }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
