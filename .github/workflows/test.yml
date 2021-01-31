@@ -28,7 +28,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ubuntu-latest
+        os: [ ubuntu-latest ]
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
         - 14.x
