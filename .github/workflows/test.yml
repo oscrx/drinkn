@@ -61,6 +61,7 @@ jobs:
         - 15.x
 
     steps:
+    - uses: actions/checkout@v2
     - env:
         FOLDER: ${{ matrix.folder }}
         NODE: ${{ matrix.node-version }}
@@ -74,7 +75,6 @@ jobs:
       run: echo $FOLDER $NODE $PWD
       working-directory: ${{ matrix.folder }}
 
-    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
