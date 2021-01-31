@@ -21,23 +21,43 @@ on:
 
 
 jobs:
-  build:
+  # JOB to run change detection
+  changes:
     runs-on: ubuntu-latest
+    outputs:
+      # Expose matched filters as job 'packages' output variable
+      folders: ${{ steps.filter.outputs.changes }}
+    steps:
+    # For pull requests it's not necessary to checkout the code
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          auth: /auth
+          beer-import: /beer-import
+          cocktail-api: /cocktail-api
+          frontend: /frontend
+          supermarket-api: /supermarket-api
+  test:
+    needs: changes
     strategy:
       matrix:
+        # Parse JSON array containing names of all filters matching any of changed files
+        # e.g. ['package1', 'package2'] if both package folders contains changes
+        folder: ${{ fromJson(needs.changes.outputs.folders) }}
+        # folder:
+        # - /auth
+        # # - /beer-api
+        # - /beer-import
+        # - /cocktail-api
+        # # - /cocktail-import
+        # - /frontend
+        # - /supermarket-api
+        # # - /supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
         - 14.x
         - 15.x
-        folder:
-        - auth
-        # - beer-api
-        - beer-import
-        - cocktail-api
-        # - cocktail-import
-        - frontend
-        - supermarket-api
-        # - supermarket-import
 
     steps:
     - name: Echo site details
