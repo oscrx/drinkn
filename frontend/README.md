@@ -1,10 +1,3 @@
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-
-| Branch | Status | Coverage | Quality |
-| --- | --- | --- | --- |
-| Master: | [![Build Status](https://travis-ci.com/bierteam/FrontEnd.svg?branch=master)](https://travis-ci.com/bierteam/FrontEnd) | [![codecov](https://codecov.io/gh/bierteam/FrontEnd/branch/master/graph/badge.svg)](https://codecov.io/gh/bierteam/FrontEnd) | [![codebeat badge](https://codebeat.co/badges/a527f0f4-c700-4187-b884-c53ca3d43977)](https://codebeat.co/projects/github-com-bierteam-frontend-master)
-| Dev: | [![Build Status](https://travis-ci.com/bierteam/FrontEnd.svg?branch=dev)](https://travis-ci.com/bierteam/FrontEnd) | [![codecov](https://codecov.io/gh/bierteam/FrontEnd/branch/dev/graph/badge.svg)](https://codecov.io/gh/bierteam/FrontEnd) | [![codebeat badge](https://codebeat.co/badges/INSERTDEVUUIDHERE)](https://codebeat.co/projects/github-com-bierteam-frontend-dev)
-
 # FrondEnd
 
 A simple node app to get some usable data from [biernet.nl](https://biernet.nl/)

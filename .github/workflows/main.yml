@@ -50,12 +50,10 @@ jobs:
       working-directory: ${{ matrix.folder }}
     - run: npm run lint --if-present
       working-directory: ${{ matrix.folder }}
-    - run: npm run coverage --if-present
-      working-directory: ${{ matrix.folder }}
 
     - uses: codecov/codecov-action@v1
       with:
-      - directory: ${{ matrix.folder }}
+        directory: ${{ matrix.folder }}
 
   docker:
     if: github.ref == 'refs/heads/master' || github.event == 'push'

@@ -17,7 +17,6 @@
   "scripts": {
     "test": "standard && jest --config test/unit/jest.conf.js",
     "test-e2e": "node test/e2e/runner.js",
-    "coverage": "codecov",
     "docker-build": "docker build . -t import-bier",
     "docker-run": "docker run --env-file .env import-bier"
   },
@@ -29,7 +28,6 @@
     "rev-hash": "^3.0.0"
   },
   "devDependencies": {
-    "codecov": "3.8.1",
     "dotenv": "8.2.0",
     "jest": "25.5.4",
     "rimraf": "3.0.2",
