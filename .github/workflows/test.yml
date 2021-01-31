@@ -47,14 +47,14 @@ jobs:
         # e.g. ['package1', 'package2'] if both package folders contains changes
         # folder: ${{ fromJson(needs.changes.outputs.folders) }}
         folder:
-        - /auth
-        # - /beer-api
-        - /beer-import
-        - /cocktail-api
-        # - /cocktail-import
-        - /frontend
-        - /supermarket-api
-        # - /supermarket-import
+        - auth
+        # - beer-api
+        - beer-import
+        - cocktail-api
+        # - cocktail-import
+        - frontend
+        - supermarket-api
+        # - supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
         - 14.x
