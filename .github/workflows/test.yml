@@ -52,10 +52,7 @@ jobs:
         FOLDER: ${{ matrix.folder }}
         OS: ${{ matrix.os }}
         NODE: ${{ matrix.node-version }}
-      run: echo $FOLDER 
-      run: echo $OS 
-      run: echo $NODE 
-      run: echo $PWD
+      run: echo $FOLDER $OS $NODE $PWD
       working-directory: ${{ matrix.folder }}
 
     - uses: actions/checkout@v2
