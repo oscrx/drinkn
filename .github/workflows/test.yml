@@ -65,6 +65,9 @@ jobs:
         FOLDER: ${{ matrix.folder }}
         NODE: ${{ matrix.node-version }}
       run: echo $FOLDER $NODE $PWD
+    - run: ls -lah
+    - run: ls -lah ..
+
     - env:
         FOLDER: ${{ matrix.folder }}
         NODE: ${{ matrix.node-version }}
