@@ -19,8 +19,8 @@ jobs:
         - auth
         # - beer-api
         - beer-import
-        # - cocktail-api
-        - cocktail-import
+        - cocktail-api
+        # - cocktail-import
         - frontend
         # - supermarket-api
         - supermarket-import
