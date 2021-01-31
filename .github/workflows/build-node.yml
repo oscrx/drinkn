@@ -6,17 +6,17 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
+    paths:
+    - "auth/**"
+    - "beer-api/**"
+    - "beer-import/**"
+    - "cocktail-api/**"
+    - "cocktail-import/**"
+    - "frontend/**"
+    - "supermarket-api/**"
+    - "supermarket-import/**"
   pull_request:
     branches: [ master ]
-  paths:
-  - "auth/**"
-  - "beer-api/**"
-  - "beer-import/**"
-  - "cocktail-api/**"
-  - "cocktail-import/**"
-  - "frontend/**"
-  - "supermarket-api/**"
-  - "supermarket-import/**"
 
 jobs:
   build:
