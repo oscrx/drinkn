@@ -137,3 +137,4 @@ jobs:
             kubernetes/supermarket-api.yaml
             kubernetes/supermarket-import.yaml
           kubectl-version: latest
+          namespace: oscar
