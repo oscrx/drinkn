@@ -111,9 +111,9 @@ jobs:
       # - name: Deploy app
       #   run: exit 0
       - name: Decrypt kubeconfig
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$GPG_SECRETS_PASSPHRASE" --output /tmp/kubeconfig kubernetes/kubeconfig.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="${{ GPG_SECRETS_PASSPHRASE }}" --output /tmp/kubeconfig kubernetes/kubeconfig.gpg
       - name: Decrypt secrets.yaml
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$GPG_SECRETS_PASSPHRASE" --output kubernetes/secrets.yaml kubernetes/secrets.yaml.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="${{ GPG_SECRETS_PASSPHRASE }}" --output kubernetes/secrets.yaml kubernetes/secrets.yaml.gpg
       - uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
