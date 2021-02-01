@@ -19,10 +19,10 @@ jobs:
         - auth
         # - beer-api
         - beer-import
-        - cocktail-api
+        # - cocktail-api
         # - cocktail-import
         - frontend
-        - supermarket-api
+        # - supermarket-api
         # - supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         - 12.x
@@ -65,10 +65,10 @@ jobs:
         - auth
         # - beer-api
         - beer-import
-        - cocktail-api
+        # - cocktail-api
         # - cocktail-import
         - frontend
-        - supermarket-api
+        # - supermarket-api
         # - supermarket-import
     steps:
     - name: Check Out Repo 
@@ -108,5 +108,20 @@ jobs:
     needs: [ test, docker ]
     if: github.ref == 'refs/heads/master' || github.event == 'push'
     steps:
-      - name: Deploy app
-        run: exit 0
+      # - name: Deploy app
+      #   run: exit 0
+      - name: Decrypt kubeconfig
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$GPG_SECRETS_PASSPHRASE" --output /tmp/kubeconfig kubernetes/kubeconfig.gpg
+      - name: Decrypt secrets.yaml
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$GPG_SECRETS_PASSPHRASE" --output kubernetes/secrets.yaml kubernetes/secrets.yaml.gpg
+      - uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: /tmp/kubeconfig # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
+        id: setcontext
+      
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1.2
+        with:
+          manifests: '/kubernetes/*.yaml'
+          kubectl-version: 'latest'
