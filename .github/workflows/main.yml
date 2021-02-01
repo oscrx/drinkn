@@ -108,8 +108,7 @@ jobs:
     needs: [ test, docker ]
     if: github.ref == 'refs/heads/master' || github.event == 'push'
     steps:
-      - name: show dir
-        run: echo $PWD
+      - uses: actions/checkout@v2
       - name: Decrypt kubeconfig
         run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GPG_PASSPHRASE }}" --output /tmp/kubeconfig kubernetes/kubeconfig.gpg
       - name: Decrypt secrets.yaml
