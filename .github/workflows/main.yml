@@ -141,5 +141,5 @@ jobs:
       - name: workaround apply
         run: docker run --rm -v /tmp/kubeconfig:/.kube/config -v $PWD/kubernetes:/files bitnami/kubectl:latest apply -f /files
       - name: workaround restart
-        run: docker run --rm -v /tmp/kubeconfig:/.kube/config -v $PWD/kubernetes:/files bitnami/kubectl:latest rollout restart -f /files; exit 0
+        run: docker run --rm -v /tmp/kubeconfig:/.kube/config -v $PWD/kubernetes:/files bitnami/kubectl:latest rollout restart -f /files; echo "hope that worked"
         
