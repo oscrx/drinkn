@@ -98,7 +98,7 @@ jobs:
       with:
         context: ${{ matrix.folder }}
         builder: ${{ steps.buildx.outputs.name }}
-        push: false
+        push: true
         tags:  bierteam/${{ matrix.folder }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
