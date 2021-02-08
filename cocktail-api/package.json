@@ -17,7 +17,6 @@
    "scripts": {
       "build": "tsc",
       "start": "ts-node-dev --respawn --transpileOnly src/server.ts",
-      "lint": "standardx --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin **/*.ts",
       "fix": "npm run lint -- --fix",
       "docker-build": "docker build . -t cocktail-api",
       "docker-run": "docker run --env-file .env cocktail-api"
