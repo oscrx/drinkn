@@ -18,15 +18,15 @@ jobs:
         folder:
         - auth
         # - beer-api
-        # - beer-import
-        # - cocktail-api
+        - beer-import
+        - cocktail-api
         # - cocktail-import
-        # - frontend
-        # - supermarket-api
+        - frontend
+        - supermarket-api
         # - supermarket-import
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        # - 12.x
-        # - 14.x
+        - 12.x
+        - 14.x
         - 15.x
 
     steps:
@@ -64,11 +64,11 @@ jobs:
         folder:
         - auth
         # - beer-api
-        # - beer-import
-        # - cocktail-api
+        - beer-import
+        - cocktail-api
         # - cocktail-import
-        # - frontend
-        # - supermarket-api
+        - frontend
+        - supermarket-api
         # - supermarket-import
     steps:
     - name: Check Out Repo 
@@ -102,44 +102,3 @@ jobs:
         tags:  bierteam/${{ matrix.folder }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [ test, docker ]
-    if: github.ref == 'refs/heads/master' || github.event == 'push'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Decrypt kubeconfig
-        run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GPG_PASSPHRASE }}" --output /tmp/kubeconfig kubernetes/kubeconfig.gpg
-      - name: Decrypt secrets.yaml
-        run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GPG_PASSPHRASE }}" --output kubernetes/secrets.yaml kubernetes/secrets.yaml.gpg
-      # - uses: azure/k8s-set-context@v1
-      #   with:
-      #     method: kubeconfig
-      #     kubeconfig: /tmp/kubeconfig # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-      #   id: setcontext
-      # - name: show directory
-      #   run: ls -lah; ls -lah *
-      # - name: Deploy to Kubernetes cluster
-      #   uses: Azure/k8s-deploy@v1.2
-      #   with:
-      #     manifests: |
-      #       kubernetes/auth.yaml
-      #       kubernetes/beer-api.yaml
-      #       kubernetes/beer-import.yaml
-      #       kubernetes/cocktail-api.yaml
-      #       kubernetes/cocktail-import.yaml
-      #       kubernetes/drinkn-ingress.yaml
-      #       kubernetes/frontend-v1.yaml
-      #       kubernetes/frontend.yaml
-      #       kubernetes/pils-api.yaml
-      #       kubernetes/secrets.yaml
-      #       kubernetes/supermarket-api.yaml
-      #       kubernetes/supermarket-import.yaml
-      #     kubectl-version: latest
-      #     namespace: oscar
-      - name: workaround apply
-        run: docker run --rm -v /tmp/kubeconfig:/.kube/config -v $PWD/kubernetes:/files bitnami/kubectl:latest apply -f /files
-      - name: workaround restart
-        run: docker run --rm -v /tmp/kubeconfig:/.kube/config -v $PWD/kubernetes:/files bitnami/kubectl:latest rollout restart -f /files; echo "hope that worked"
-        
